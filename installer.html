@@ -1,7 +1,8 @@
 <script>
 	
 	function install() {
-		var r = navigator.mozApps.install('manifest.webapp');
+    // Total hack due to this bug that prevents relative path for mozApps.install: https://bugzilla.mozilla.org/show_bug.cgi?id=745928
+		var r = navigator.mozApps.install(location.protocol + "//" + location.host + location.pathname.replace('/installer.html','') + "/manifest.webapp");
 		
 		console.warn(r);
 		
